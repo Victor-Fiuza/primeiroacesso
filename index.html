@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial Email Corporativo</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0E76E0 0%, #5b00b8 100%);
-            margin: 0;
-            padding: 20px;
+            padding: 10px;
+            line-height: 1.6;
         }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -19,73 +26,116 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
+        
         .header {
             background: linear-gradient(135deg, #0E76E0 0%, #5b00b8 100%);
             color: white;
-            padding: 40px;
+            padding: 30px 20px;
             text-align: center;
         }
+        
+        .header img {
+            max-width: 200px;
+            width: 80%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
         .header h1 {
             margin: 10px 0;
-            font-size: 2em;
+            font-size: clamp(1.5em, 5vw, 2em);
         }
+        
+        .header p {
+            font-size: clamp(0.9em, 3vw, 1.1em);
+        }
+        
         .content {
-            padding: 30px;
+            padding: 20px;
         }
+        
         .info-box {
             background: #f0f4ff;
             border-left: 4px solid #0E76E0;
-            padding: 20px;
+            padding: 15px;
             margin: 20px 0;
             border-radius: 8px;
         }
+        
+        .info-box h3 {
+            color: #0E76E0;
+            font-size: clamp(1em, 4vw, 1.2em);
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            margin: 8px 0;
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+        
         .email-example {
             background: white;
             border: 2px solid #0E76E0;
-            padding: 15px;
+            padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
             text-align: center;
-            font-size: 1.2em;
+            font-size: clamp(0.9em, 3.5vw, 1.2em);
             color: #0E76E0;
             font-weight: bold;
+            word-break: break-all;
         }
+        
         .password-box {
             background: #2d3748;
             color: #48bb78;
-            padding: 20px;
+            padding: 15px;
             margin: 15px 0;
             border-radius: 8px;
             text-align: center;
             font-family: monospace;
-            font-size: 1.5em;
+            font-size: clamp(1em, 4vw, 1.5em);
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
+        
         .step {
             background: #f9fafb;
             border: 2px solid #e0e7ff;
             border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 20px 15px;
+            margin: 20px 0;
         }
+        
         .step-number {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+            max-width: 40px;
+            max-height: 40px;
             background: linear-gradient(135deg, #0E76E0 0%, #5b00b8 100%);
             color: white;
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 10px;
         }
+        
         .step h2 {
             color: #333;
             margin: 10px 0;
+            font-size: clamp(1.1em, 4vw, 1.4em);
         }
+        
+        .step > p {
+            margin: 10px 0;
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+        
         .substep {
             background: white;
             padding: 12px;
@@ -93,86 +143,279 @@
             border-radius: 8px;
             display: flex;
             align-items: center;
+            gap: 12px;
         }
+        
         .substep-num {
             background: #0E76E0;
             color: white;
             width: 30px;
             height: 30px;
+            min-width: 30px;
+            max-width: 30px;
+            min-height: 30px;
+            max-height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            margin-right: 15px;
+            font-size: 0.9em;
             flex-shrink: 0;
         }
+        
+        .substep > div {
+            flex: 1;
+            font-size: clamp(0.85em, 3vw, 1em);
+        }
+        
         .warning {
             background: #fff5f5;
             border-left: 4px solid #fc8181;
-            padding: 15px;
+            padding: 12px;
             margin: 15px 0;
             border-radius: 8px;
+            font-size: clamp(0.85em, 3vw, 1em);
         }
+        
         .success {
             background: #f0fff4;
             border-left: 4px solid #48bb78;
-            padding: 15px;
+            padding: 12px;
             margin: 15px 0;
             border-radius: 8px;
+            font-size: clamp(0.85em, 3vw, 1em);
         }
+        
         .phone {
             background: #2d3748;
             border-radius: 25px;
-            padding: 15px;
+            padding: 12px;
             max-width: 250px;
             margin: 20px auto;
         }
+        
         .phone-screen {
             background: white;
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
         }
+        
+        .phone-screen p {
+            font-size: clamp(0.8em, 3vw, 1em);
+            margin: 5px 0;
+        }
+        
         .code {
-            font-size: 2em;
+            font-size: clamp(1.5em, 6vw, 2em);
             font-weight: bold;
             color: #0E76E0;
-            letter-spacing: 8px;
+            letter-spacing: 5px;
             margin: 15px 0;
             font-family: monospace;
         }
+        
+        .requirements {
+            background: white;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .requirements h4 {
+            color: #0E76E0;
+            margin-bottom: 8px;
+            font-size: clamp(0.95em, 3.5vw, 1.1em);
+        }
+        
+        .requirements p {
+            margin: 5px 0;
+            font-size: clamp(0.85em, 3vw, 1em);
+        }
+        
+        .qr-code-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .qr-code-section p:first-child {
+            color: #0E76E0;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+        
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: repeating-linear-gradient(
+                45deg,
+                #f0f0f0,
+                #f0f0f0 10px,
+                white 10px,
+                white 20px
+            );
+            border: 3px solid #0E76E0;
+            margin: 15px auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0E76E0;
+            font-size: clamp(0.8em, 3vw, 1em);
+        }
+        
+        .qr-code-section p:last-child {
+            color: #666;
+            font-size: clamp(0.85em, 3vw, 1em);
+        }
+        
         .tips {
             background: linear-gradient(135deg, #0E76E0 0%, #5b00b8 100%);
             color: white;
-            padding: 30px;
-            margin: 30px 0;
+            padding: 20px 15px;
+            margin: 20px 0;
             border-radius: 12px;
         }
+        
+        .tips h2 {
+            margin-bottom: 15px;
+            font-size: clamp(1.2em, 4vw, 1.5em);
+        }
+        
         .tip {
             background: rgba(255,255,255,0.1);
             padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
+            font-size: clamp(0.85em, 3vw, 1em);
         }
+        
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px 15px;
             background: #f9fafb;
+        }
+        
+        .footer p {
+            font-size: clamp(0.9em, 3vw, 1em);
+        }
+        
+        .footer h2 {
+            color: #0E76E0;
+            margin: 10px 0;
+            font-size: clamp(1.3em, 5vw, 1.8em);
+        }
+        
+        /* Media queries para ajustes finos */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .step {
+                padding: 15px 10px;
+            }
+            
+            .info-box {
+                padding: 12px;
+            }
+            
+            .email-example {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+            
+            .password-box {
+                padding: 12px;
+                letter-spacing: 1px;
+            }
+            
+            .substep {
+                padding: 10px;
+                gap: 10px;
+            }
+            
+            .code {
+                letter-spacing: 3px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .step-number {
+                width: 35px;
+                height: 35px;
+                min-width: 35px;
+                min-height: 35px;
+                max-width: 35px;
+                max-height: 35px;
+                font-size: 1.1em;
+            }
+            
+            .substep-num {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+                max-width: 28px;
+                min-height: 28px;
+                max-height: 28px;
+                font-size: 0.85em;
+            }
+            
+            .qr-placeholder {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Melhorias para telas maiores */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .content {
+                padding: 30px;
+            }
+            
+            .header {
+                padding: 40px;
+            }
+            
+            .step {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div style="font-size: 3em;"><img src="https://arenabsb.com.br/wp-content/uploads/2023/05/logo-header-arena-brb.svg"></div>
+            <img src="https://arenabsb.com.br/wp-content/uploads/2023/05/logo-header-arena-brb.svg" alt="Arena BSB Logo">
             <h1>Primeiro Acesso</h1>
             <p>Email Corporativo Arena BSB</p>
         </div>
         
         <div class="content">
             <div class="info-box">
-                <h3 style="color: #0E76E0;">📋 Informações do Seu Email</h3>
+                <h3>📋 Informações do Seu Email</h3>
                 <p><strong>Padrão de email:</strong> primeironome.ultimosobrenome@arenabsb.com.br</p>
                 <p style="margin: 15px 0; color: #666;">Exemplos:</p>
                 <div class="email-example">joao.silva@arenabsb.com.br</div>
@@ -226,8 +469,8 @@
                     <div class="substep-num">4</div>
                     <div>Clique em <strong>Confirmar</strong></div>
                 </div>
-                <div style="background: white; padding: 15px; margin: 15px 0; border-radius: 8px;">
-                    <h4 style="color: #0E76E0;">✓ Requisitos da Senha:</h4>
+                <div class="requirements">
+                    <h4>✓ Requisitos da Senha:</h4>
                     <p>• Mínimo de 8 caracteres</p>
                     <p>• Uma letra MAIÚSCULA</p>
                     <p>• Uma letra minúscula</p>
@@ -290,10 +533,10 @@
                     <div class="substep-num">6</div>
                     <div>Aponte a câmera para o QR Code</div>
                 </div>
-                <div style="text-align: center; margin: 20px 0; padding: 20px; background: white; border-radius: 10px;">
-                    <p style="color: #0E76E0; font-weight: bold;">Exemplo de QR Code:</p>
-                    <div style="width: 150px; height: 150px; background: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 10px, white 10px, white 20px); border: 3px solid #0E76E0; margin: 15px auto; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0E76E0;">QR CODE</div>
-                    <p style="color: #666;">📸 Aponte a câmera aqui</p>
+                <div class="qr-code-section">
+                    <p>Exemplo de QR Code:</p>
+                    <div class="qr-placeholder">QR CODE</div>
+                    <p>📸 Aponte a câmera aqui</p>
                 </div>
             </div>
             
@@ -374,11 +617,9 @@
         
         <div class="footer">
             <p>Bem-vindo(a) a</p>
-            <h2 style="color: #0E76E0;">Arena BSB 🎉</h2>
+            <h2>Arena BSB 🎉</h2>
             <p style="font-size: 0.9em; color: #666;">Precisa de ajuda? Contate o suporte de TI</p>
         </div>
     </div>
 </body>
-
 </html>
-
